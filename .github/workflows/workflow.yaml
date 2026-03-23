@@ -1,0 +1,20 @@
+name: My First Workflow
+
+on:
+  push:
+    branches: [ "main" ]  # Runs when you push to main
+  pull_request:
+    branches: [ "main" ]  # Runs when a PR is opened against main
+
+# 3. Hierarchy: Jobs -> Steps -> Actions/Commands
+jobs:
+  build-and-greet:
+    # Specify the runner (the virtual computer)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
+
+      - name: Make the dragon speak
+        run: /usr/games/cowsay -f dragon "GitHub Actions is awesome!"
